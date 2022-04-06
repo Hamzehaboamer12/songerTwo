@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/style/styles.css}" rel="stylesheet" />
+
+</head>
+<body>
+
+<ul>
+
+
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/albums">Albums</a></li>
+    <li><a href="/UpperCase/hello">Capitalize</a></li>
+    <li><a href="/hello">Hello</a></li>
+    <li><a href="/songs">Songs</a></li>
+</ul>
+
+<br> <br> <br>
+
+<div>
+    <div method="GET" th:each="obj : ${albums}">
+
+
+        <p th:text="${obj.id}"></p>
+        <img th:src="${obj.imageUrl}" th:alt="${obj.title}"/>
+        <p th:text="${obj.title}"></p>
+        <p th:text="${obj.artist}"></p>
+        <p th:text="${obj.songCount}"></p>
+        <p th:text="${obj.length}"></p>
+
+
+
+
+    </div>
+</div>
+
+
+<h1>Add New Album</h1>
+<form th:action="@{/add/album}"  method="POST">
+    <p>Title: <input type="text" name="title"/></p>
+    <p>Artist: <input type="text" name="artist"/></p>
+    <p>Song Count: <input type="number" name="songCount"/></p>
+    <p>Album Length: <input type="number" name="length"/></p>
+    <p>Image URL: <input type="text"name="imageUrl"/></p>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+
+</body>
+</html>

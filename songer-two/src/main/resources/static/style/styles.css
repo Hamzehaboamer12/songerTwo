@@ -1,0 +1,21 @@
+ul li {
+  float: left;
+  list-style: none;
+  text-align: center;
+  background-color: #000000;
+  margin-right: 30px;
+  width: 120px;
+  line-height: 60px;
+
+
+}
+
+ul li a{
+ color:	#FFFFFF;
+text-decoration: none;
+}
+
+div{
+
+  text-align: center;
+}
