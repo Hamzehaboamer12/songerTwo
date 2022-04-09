@@ -27,6 +27,9 @@ public class GreetingsController {
     @Autowired
     REPO Repo;
 
+    @Autowired
+    private REPO albumRepository;
+
 
     @RequestMapping( value = "/")
     public String home()
@@ -73,6 +76,14 @@ public class GreetingsController {
     ){
         Albums albums = Repo.save(new Albums(length , songCount , title , imageUrl ,artist));
         return new RedirectView("/albums");
+    }
+
+    @GetMapping("/albums/{id}/songs")
+    public String viewAlbumSongs(@PathVariable Long id, Model model){
+        Albums album = albumRepository.findById(id).orElseThrow();
+        model.addAttribute("songs", album.getSongs());
+        model.addAttribute("album", album);
+        return "albumsongs";
     }
 
 

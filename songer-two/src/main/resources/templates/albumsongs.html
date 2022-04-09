@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Album songs</title>
+    <link th:href="@{/style/styles.css}" rel="stylesheet">
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/albums">Albums</a></li>
+    <li><a href="/UpperCase/hello">Capitalize</a></li>
+    <li><a href="/songs">Songs</a></li>
+    <li class="hello"style="float:right "><a href="/hello">Hello</a></li>
+</ul>
+
+<div>
+    <div th:each="obj : ${songs}" >
+        <label>Title:</label>
+        <p th:text="${obj.getTitle()}"></p>
+        <label>Length:</label>
+        <p th:text="${obj.length}"></p>
+        <label>TrackNumber:</label>
+        <p th:text="${obj.trackNumber}"></p>
+    </div>
+    <br><br><br>
+</div>
+<div>
+    <h1>Add New Song</h1>
+    <form th:action="@{/addSong}" method="POST">
+        <input type="text" name="id" th:value="${id}" required readonly hidden/>
+        <label>Title:</label>
+        <input type="text" name="title" placeholder="" required />
+        <label>Length:</label>
+        <input type="number" name="length"  placeholder="" required />
+        <label>trackNumber:</label>
+        <input type="number" name="trackNumber"  placeholder="" required />
+        <input type="submit" value="submit" class="btn btnSubmit">
+    </form>
+</div>
+</body>
+</html>
